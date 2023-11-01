@@ -16,13 +16,13 @@ public abstract class SingletonScriptableObject<T> : ScriptableObject where T : 
 
                 if (results.Length == 0)
                 {
-                    Debug.Log("1");
+                    Debug.LogError($"SingletonScriptableObject.Instance.Results.Length == 0 for type {typeof(T).ToString()}.");
                     return null;
                 }
 
                 if (results.Length > 1)
                 {
-                    Debug.Log("2");
+                    Debug.LogError($"SingletonScriptableObject.Instance.Results.Length > 1 for type {typeof(T).ToString()}.");
                     return null;
                 }
 
