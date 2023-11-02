@@ -18,12 +18,12 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected!");
+        Debug.Log("Connected.");
         Debug.Log(PhotonNetwork.LocalPlayer.NickName);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log($"Disconnected!\nCause: {cause.ToString()}");
+        Debug.Log($"Disconnected.\n{cause.ToString()}");
     }
 }
