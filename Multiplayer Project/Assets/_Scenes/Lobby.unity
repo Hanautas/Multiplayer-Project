@@ -1099,6 +1099,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomName: {fileID: 576908843}
+  content: {fileID: 303306850}
+  room: {fileID: 339701334153233508, guid: 0d184f51560e6a745a7c06c7db2cd0e0, type: 3}
 --- !u!4 &639140287
 Transform:
   m_ObjectHideFlags: 0
