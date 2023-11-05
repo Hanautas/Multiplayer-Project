@@ -7,12 +7,22 @@ using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    public TMP_Text roomName;
-    public Transform content;
+    [Header("Menus")]
+    public GameObject lobbyMenu;
+    public GameObject currentRoomMenu;
 
-    public Room room;
+    [Header("Room")]
+    public TMP_Text roomNameInputField;
+    public Transform roomContent;
+    public RoomListItem roomPrefab;
 
-    private List<Room> rooms = new List<Room>();
+    private List<RoomListItem> rooms = new List<RoomListItem>();
+
+    [Header("Player")]
+    public Transform playerContent;
+    public PlayerListItem playerPrefab;
+
+    private List<PlayerListItem> players = new List<PlayerListItem>();
 
     public void CreateRoom()
     {
@@ -25,12 +35,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
         
         options.MaxPlayers = 2;
 
-        PhotonNetwork.JoinOrCreateRoom(roomName.text, options,  TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(roomNameInputField.text, options,  TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully.");
+
+        lobbyMenu.gameObject.SetActive(false);
+        currentRoomMenu.gameObject.SetActive(true);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -44,7 +57,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             if (roomInfo.RemovedFromList)
             {
-                int index = rooms.FindIndex(x => x.RoomInfo.Name == roomInfo.Name);
+                int index = rooms.FindIndex(x => x.roomInfo.Name == roomInfo.Name);
 
                 if (index != -1)
                 {
@@ -55,12 +68,51 @@ public class RoomManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                Room newRoom = Instantiate(room, content);
+                RoomListItem roomListItem = Instantiate(roomPrefab, roomContent);
 
-                newRoom.SetRoomInfo(roomInfo);
+                roomListItem.SetRoomInfo(roomInfo);
 
-                rooms.Add(newRoom);
+                rooms.Add(roomListItem);
             }
         }
+    }
+
+    public override void OnJoinedRoom()
+    {
+        GetCurrentRoomPlayers();
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        AddPlayerListItem(newPlayer);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        int index = players.FindIndex(x => x.player == otherPlayer);
+
+        if (index != -1)
+        {
+            Destroy(players[index].gameObject);
+            
+            players.RemoveAt(index);
+        }
+    }
+
+    private void GetCurrentRoomPlayers()
+    {
+        foreach (KeyValuePair<int, Player> playerInfo in PhotonNetwork.CurrentRoom.Players)
+        {
+            AddPlayerListItem(playerInfo.Value);
+        }
+    }
+
+    private void AddPlayerListItem(Player newPlayer)
+    {
+        PlayerListItem playerListItem = Instantiate(playerPrefab, playerContent);
+
+        playerListItem.SetPlayerInfo(newPlayer);
+
+        players.Add(playerListItem);
     }
 }
