@@ -15,7 +15,7 @@ public class RoomListItem : MonoBehaviour
     {
         roomInfo = info;
 
-        text.text = $"{roomInfo.Name}\n{roomInfo.MaxPlayers}";
+        text.text = $"{roomInfo.Name}\n{roomInfo.PlayerCount}/{roomInfo.MaxPlayers} Players";
     }
 
     public void JoinRoom()

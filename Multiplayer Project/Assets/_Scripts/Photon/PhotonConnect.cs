@@ -6,8 +6,6 @@ using Photon.Realtime;
 
 public class PhotonConnect : MonoBehaviourPunCallbacks
 {
-    public string gameVersion = "0.0.1";
-
     void Start()
     {
         Debug.Log("Connecting...");
