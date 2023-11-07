@@ -8,21 +8,26 @@ using TMPro;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     [Header("Menus")]
+    public GameObject connectMenu;
     public GameObject lobbyMenu;
     public GameObject currentRoomMenu;
 
     [Header("Room")]
     public TMP_Text roomNameInputField;
     public Transform roomContent;
-    public RoomListItem roomPrefab;
 
     private List<RoomListItem> rooms = new List<RoomListItem>();
 
     [Header("Player")]
     public Transform playerContent;
-    public PlayerListItem playerPrefab;
 
     private List<PlayerListItem> players = new List<PlayerListItem>();
+
+    public override void OnConnectedToMaster()
+    {
+        connectMenu.SetActive(false);
+        lobbyMenu.SetActive(true);
+    }
 
     public void CreateRoom()
     {
@@ -68,7 +73,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                RoomListItem roomListItem = Instantiate(roomPrefab, roomContent);
+                RoomListItem roomListItem = Instantiate(Resources.Load<RoomListItem>("UI/RoomListItem"), roomContent);
 
                 roomListItem.SetRoomInfo(roomInfo);
 
@@ -80,6 +85,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         GetCurrentRoomPlayers();
+
+        lobbyMenu.gameObject.SetActive(false);
+        currentRoomMenu.gameObject.SetActive(true);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -109,7 +117,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void AddPlayerListItem(Player newPlayer)
     {
-        PlayerListItem playerListItem = Instantiate(playerPrefab, playerContent);
+        PlayerListItem playerListItem = Instantiate(Resources.Load<PlayerListItem>("UI/PlayerListItem"), playerContent);
 
         playerListItem.SetPlayerInfo(newPlayer);
 

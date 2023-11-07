@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [Header("Scene Management")]
     [SerializeField] private string currentSceneName;
     [SerializeField] private string startSceneName;
-    [SerializeField] private string[] scenesToLoad;
 
     private AsyncOperation currentScene;
     private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
@@ -22,13 +21,18 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
-        foreach (string sceneName in scenesToLoad)
-        {
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        }
+        LoadStartScene();
+    }
 
-        SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive);
+    private void LoadStartScene()
+    {
+        loadingScreen.SetActive(true);
+
+        scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive));
+
         currentSceneName = startSceneName;
+
+        StartCoroutine(GetSceneLoadProgress());
     }
 
     public void LoadScene(string sceneName)
@@ -44,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(GetSceneLoadProgress());
     }
-
+/*
     public void ReloadScene()
     {
         loadingScreen.SetActive(true);
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(GetSceneLoadProgress());
     }
-
+*/
     private IEnumerator GetSceneLoadProgress()
     {
         for (int i = 0; i < scenesLoading.Count; i++)
@@ -68,20 +72,6 @@ public class GameManager : MonoBehaviour
         }
 
         loadingScreen.SetActive(false);
-    }
-
-    public void LoadSceneDelay(string sceneName)
-    {
-        StartCoroutine(WaitLoadScene(sceneName));
-    }
-
-    private IEnumerator WaitLoadScene(string sceneName)
-    {
-        //Transition.instance.FadeOut(0);
-
-        yield return new WaitForSeconds(1f);
-
-        GameManager.instance.LoadScene(sceneName);
     }
 
     public void LoadSceneAdditive(string sceneName)

@@ -9,6 +9,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     void Start()
     {
         Debug.Log("Connecting...");
+        
         PhotonNetwork.NickName = MasterManager.GameSettings.Nickname;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
