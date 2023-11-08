@@ -7,8 +7,7 @@ using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    [Header("Menus")]
-    public GameObject connectMenu;
+    [Header("Menu")]
     public GameObject lobbyMenu;
     public GameObject currentRoomMenu;
 
@@ -23,12 +22,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private List<PlayerListItem> players = new List<PlayerListItem>();
 
-    public override void OnConnectedToMaster()
-    {
-        connectMenu.SetActive(false);
-        lobbyMenu.SetActive(true);
-    }
-
     public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
@@ -40,7 +33,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         
         options.MaxPlayers = 2;
 
-        PhotonNetwork.JoinOrCreateRoom(roomNameInputField.text, options,  TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(roomNameInputField.text, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
