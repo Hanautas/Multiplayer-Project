@@ -24,6 +24,25 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private List<PlayerListItem> players = new List<PlayerListItem>();
 
+    private bool startTimer = false;
+    //public float time = 8f;
+    public float timeRemaining = 8f;
+
+    void Update()
+    {
+        if (startTimer)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                StartGame();
+            }
+        }
+    }
+
     public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
@@ -63,6 +82,24 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        foreach (PlayerListItem player in players)
+        {
+            if (!player.GetPlayerIsReady())
+            {
+                return;
+            }
+        }
+
+        startTimer = true;
+    }
+
+    private void StartGame()
+    {
+        GameManager.instance.LoadScene("Game");
     }
 
     public override void OnLeftRoom()

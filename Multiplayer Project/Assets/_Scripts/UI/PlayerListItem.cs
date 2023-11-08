@@ -31,9 +31,14 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
         SetPlayerIsReady();
     }
 
+    public bool GetPlayerIsReady()
+    {
+        return (bool)player.CustomProperties["isReady"];
+    }
+
     private void SetPlayerIsReady()
     {
-        if ((bool)player.CustomProperties["isReady"])
+        if (GetPlayerIsReady())
         {
             readyText.color = Color.green;
             readyText.text = "Ready";
