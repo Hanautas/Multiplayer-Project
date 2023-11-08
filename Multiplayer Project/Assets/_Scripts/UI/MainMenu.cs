@@ -6,6 +6,8 @@ using TMPro;
 
 public class MainMenu : MonoBehaviourPunCallbacks
 {
+    private bool showOnce = false;
+
     public GameObject connectMenu;
     public GameObject mainMenu;
     public GameObject lobbyMenu;
@@ -19,8 +21,13 @@ public class MainMenu : MonoBehaviourPunCallbacks
     
     public override void OnConnectedToMaster()
     {
-        connectMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        if (!showOnce)
+        {
+            showOnce = true;
+
+            connectMenu.SetActive(false);
+            mainMenu.SetActive(true);
+        }
     }
 
     public void Play()

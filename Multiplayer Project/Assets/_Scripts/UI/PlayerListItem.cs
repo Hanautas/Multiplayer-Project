@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
 
 public class PlayerListItem : MonoBehaviour
@@ -12,8 +13,13 @@ public class PlayerListItem : MonoBehaviour
 
     public void SetPlayerInfo(Player info)
     {
-        player = info;
+        Hashtable hash = new Hashtable();
+        hash.Add("isReady", false);
 
-        text.text = $"{player.NickName}";
+        info.SetCustomProperties(hash);
+
+        player = info;
+Debug.Log(player.CustomProperties["isReady"]);
+        text.text = $"{player.NickName}\n{player.CustomProperties["isReady"]}";
     }
 }

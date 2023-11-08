@@ -36,6 +36,20 @@ public class RoomManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinOrCreateRoom(roomNameInputField.text, options, TypedLobby.Default);
     }
 
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom(true);
+    }
+
+    public override void OnLeftRoom()
+    {
+        lobbyMenu.gameObject.SetActive(true);
+        currentRoomMenu.gameObject.SetActive(false);
+
+        Utility.DestroyChildren(playerContent);
+        players.Clear();
+    }
+
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully.");
@@ -66,11 +80,16 @@ public class RoomManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                RoomListItem roomListItem = Instantiate(Resources.Load<RoomListItem>("UI/RoomListItem"), roomContent);
+                int index = rooms.FindIndex(x => x.roomInfo.Name == roomInfo.Name);
 
-                roomListItem.SetRoomInfo(roomInfo);
+                if (index == -1)
+                {
+                    RoomListItem roomListItem = Instantiate(Resources.Load<RoomListItem>("UI/RoomListItem"), roomContent);
 
-                rooms.Add(roomListItem);
+                    roomListItem.SetRoomInfo(roomInfo);
+
+                    rooms.Add(roomListItem);
+                }
             }
         }
     }
@@ -78,6 +97,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         GetCurrentRoomPlayers();
+
+        Utility.DestroyChildren(roomContent);
+        rooms.Clear();
 
         lobbyMenu.gameObject.SetActive(false);
         currentRoomMenu.gameObject.SetActive(true);

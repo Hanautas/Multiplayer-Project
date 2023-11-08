@@ -20,7 +20,10 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
         Debug.Log("Connected.");
         Debug.Log(PhotonNetwork.LocalPlayer.NickName);
 
-        PhotonNetwork.JoinLobby();
+        if (!PhotonNetwork.InLobby)
+        {
+            PhotonNetwork.JoinLobby();
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause)
