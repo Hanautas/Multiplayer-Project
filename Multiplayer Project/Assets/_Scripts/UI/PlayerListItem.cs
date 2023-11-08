@@ -1,25 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
 
-public class PlayerListItem : MonoBehaviour
+public class PlayerListItem : MonoBehaviourPunCallbacks
 {
-    public TMP_Text text;
+    public TMP_Text nameText;
+    public TMP_Text readyText;
 
     public Player player;
 
     public void SetPlayerInfo(Player info)
     {
-        Hashtable hash = new Hashtable();
-        hash.Add("isReady", false);
+        Hashtable hash = info.CustomProperties;
+
+        if (!hash.ContainsKey("isReady"))
+        {
+            hash.Add("isReady", false);
+        }
 
         info.SetCustomProperties(hash);
 
         player = info;
-Debug.Log(player.CustomProperties["isReady"]);
-        text.text = $"{player.NickName}\n{player.CustomProperties["isReady"]}";
+
+        nameText.text = $"{player.NickName}";
+
+        SetPlayerIsReady();
+    }
+
+    private void SetPlayerIsReady()
+    {
+        if ((bool)player.CustomProperties["isReady"])
+        {
+            readyText.color = Color.green;
+            readyText.text = "Ready";
+        }
+        else
+        {
+            readyText.color = Color.red;
+            readyText.text = "Not Ready";
+        }
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        SetPlayerIsReady();
     }
 }

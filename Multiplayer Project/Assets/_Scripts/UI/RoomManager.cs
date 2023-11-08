@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
@@ -19,6 +20,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     [Header("Player")]
     public Transform playerContent;
+    public TMP_Text readyText;
 
     private List<PlayerListItem> players = new List<PlayerListItem>();
 
@@ -41,6 +43,28 @@ public class RoomManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom(true);
     }
 
+    public void ChangePlayerIsReady()
+    {
+        Hashtable hash = PhotonNetwork.LocalPlayer.CustomProperties;
+
+        if ((bool)hash["isReady"])
+        {
+            hash["isReady"] = false;
+
+            readyText.color = Color.red;
+            readyText.text = "Not Ready";
+        }
+        else
+        {
+            hash["isReady"] = true;
+
+            readyText.color = Color.green;
+            readyText.text = "Ready";
+        }
+
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+    }
+
     public override void OnLeftRoom()
     {
         lobbyMenu.gameObject.SetActive(true);
@@ -48,6 +72,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Utility.DestroyChildren(playerContent);
         players.Clear();
+
+        if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"])
+        {
+            ChangePlayerIsReady();
+        }
     }
 
     public override void OnCreatedRoom()
