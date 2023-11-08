@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1114931603}
   currentSceneName: 
-  startSceneName: Lobby
+  startSceneName: Main Menu
 --- !u!4 &1781661737
 Transform:
   m_ObjectHideFlags: 0
