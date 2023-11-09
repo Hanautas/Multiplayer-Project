@@ -24,9 +24,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private List<PlayerListItem> players = new List<PlayerListItem>();
 
-    private bool startTimer = false;
-    //public float time = 8f;
-    public float timeRemaining = 8f;
+    [Header("Timer")]
+    public bool startTimer = false;
+    public float time = 8f;
+    public float timeRemaining;
+
+    public TMP_Text timerText;
 
     void Update()
     {
@@ -35,6 +38,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
+
+                if (timeRemaining < 0)
+                {
+                    timeRemaining = 0;
+                }
+
+                timerText.text = $"Starting game in: {Mathf.FloorToInt(timeRemaining)}";
             }
             else
             {
@@ -86,15 +96,35 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
-        foreach (PlayerListItem player in players)
+        if (PhotonNetwork.CurrentRoom.Players.Count == 2)
         {
-            if (!player.GetPlayerIsReady())
+            foreach (PlayerListItem player in players)
             {
-                return;
+                if (!player.GetPlayerIsReady())
+                {
+                    StartTimer(false);
+
+                    return;
+                }
             }
+
+            StartTimer(true);
+        }
+    }
+
+    private void StartTimer(bool start)
+    {
+        if (start)
+        {
+            timerText.text = $"Starting game in: {Mathf.FloorToInt(timeRemaining)}";
+        }
+        else
+        {
+            timerText.text = $"Not all players are ready";
         }
 
-        startTimer = true;
+        startTimer = start;
+        timeRemaining = time;
     }
 
     private void StartGame()

@@ -15,15 +15,6 @@ public class PlayerListItem : MonoBehaviourPunCallbacks
 
     public void SetPlayerInfo(Player info)
     {
-        Hashtable hash = info.CustomProperties;
-
-        if (!hash.ContainsKey("isReady"))
-        {
-            hash.Add("isReady", false);
-        }
-
-        info.SetCustomProperties(hash);
-
         player = info;
 
         nameText.text = $"{player.NickName}";
