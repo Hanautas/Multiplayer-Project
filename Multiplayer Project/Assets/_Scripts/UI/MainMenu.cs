@@ -21,8 +21,6 @@ public class MainMenu : MonoBehaviourPunCallbacks
     void Start()
     {
         versionText.text = $"v{MasterManager.GameSettings.GameVersion}";
-
-        nickNameInputField.onValueChanged.AddListener(ValueChangeCheck());
     }
 
     public void ValueChangeCheck()
