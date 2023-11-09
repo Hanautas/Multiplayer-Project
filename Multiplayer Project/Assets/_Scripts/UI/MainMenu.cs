@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviourPunCallbacks
 {
@@ -13,10 +14,20 @@ public class MainMenu : MonoBehaviourPunCallbacks
     public GameObject lobbyMenu;
 
     public TMP_Text versionText;
+    public TMP_Text nickNameText;
+
+    public TMP_InputField nickNameInputField;
 
     void Start()
     {
         versionText.text = $"v{MasterManager.GameSettings.GameVersion}";
+
+        nickNameInputField.onValueChanged.AddListener(ValueChangeCheck());
+    }
+
+    public void ValueChangeCheck()
+    {
+        PhotonNetwork.NickName = nickNameText.text;
     }
     
     public override void OnConnectedToMaster()
