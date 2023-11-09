@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
         versionText.text = $"v{MasterManager.GameSettings.GameVersion}";
     }
 
-    public void ValueChangeCheck()
+    public void SetLocalPlayerNickName()
     {
         PhotonNetwork.NickName = nickNameText.text;
     }
