@@ -5,7 +5,7 @@ using UnityEngine.XR.Management;
  
 public class VRManager : MonoBehaviour
 {
-    public void Awake()
+    public void Start()
     {
         StartCoroutine(StartXRCoroutine());
     }
