@@ -1437,6 +1437,7 @@ MonoBehaviour:
   versionText: {fileID: 1520139758}
   nickNameText: {fileID: 1291131474}
   nickNameInputField: {fileID: 9094971}
+  nickNameInputFieldText: {fileID: 1291131474}
 --- !u!1 &473939337
 GameObject:
   m_ObjectHideFlags: 0

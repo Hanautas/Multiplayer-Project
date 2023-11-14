@@ -11,7 +11,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connecting...");
         
-        PhotonNetwork.NickName = MasterManager.GameSettings.Nickname;
+        PhotonNetwork.LocalPlayer.NickName = MasterManager.GameSettings.NickName;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
     }

@@ -21,11 +21,13 @@ public class MainMenu : MonoBehaviourPunCallbacks
     void Start()
     {
         versionText.text = $"v{MasterManager.GameSettings.GameVersion}";
+
+        nickNameInputField.text = PhotonNetwork.LocalPlayer.NickName;
     }
 
     public void SetLocalPlayerNickName()
     {
-        PhotonNetwork.NickName = nickNameText.text;
+        PhotonNetwork.LocalPlayer.NickName = nickNameText.text;
     }
     
     public override void OnConnectedToMaster()
