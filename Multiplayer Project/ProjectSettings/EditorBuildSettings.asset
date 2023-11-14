@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/_Scenes/Main Menu.unity
     guid: 751568c1ed85de9458a71f5cd19df57e
   - enabled: 1
+    path: Assets/_Scenes/VR/Main Menu VR.unity
+    guid: ad8476b35c339a247a12526fdfd906b7
+  - enabled: 1
     path: Assets/_Scenes/Game.unity
     guid: 62f677368cdb3384e8d9fcc88b8bbb4b
-  - enabled: 1
-    path: Assets/_Scenes/VR/Main Menu 1.unity
-    guid: ad8476b35c339a247a12526fdfd906b7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 837135c859c6b854cad51fa7b16f67ac, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8dbd1e752f175264ea12fecc942c7f19, type: 2}

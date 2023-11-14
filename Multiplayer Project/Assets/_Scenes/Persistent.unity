@@ -735,6 +735,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 1114931603}
   currentSceneName: 
   startSceneName: Main Menu
+  startSceneNameVR: Main Menu VR
 --- !u!4 &1781661737
 Transform:
   m_ObjectHideFlags: 0

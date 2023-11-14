@@ -20,8 +20,7 @@ public class VRManager : MonoBehaviour
 
         if (GetArg(enableVRArg))
         {
-
-            MasterManager.GameSettings.isVR = true;
+            MasterManager.GameSettings.IsVR = true;
 
             Debug.Log("Initializing XR...");
 
@@ -37,11 +36,14 @@ public class VRManager : MonoBehaviour
 
                 XRGeneralSettings.Instance.Manager.StartSubsystems();
             }
-            GameManager.instance.LoadStartScene(MasterManager.GameSettings.isVR);
+
+            GameManager.instance.LoadStartScene(true);
         }
         else
         {
             Debug.Log("Did not find VR arg, starting in 2D");
+
+            GameManager.instance.LoadStartScene(false);
         }
     }
 

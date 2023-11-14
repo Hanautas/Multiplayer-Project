@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Scene Management")]
     [SerializeField] private string currentSceneName;
     [SerializeField] private string startSceneName;
+    [SerializeField] private string startSceneNameVR;
 
     private AsyncOperation currentScene;
     private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
@@ -25,16 +26,18 @@ public class GameManager : MonoBehaviour
     public void LoadStartScene(bool isVR)
     {
         loadingScreen.SetActive(true);
-        if(isVR)
+
+        if (isVR)
         {
-            scenesLoading.Add(SceneManager.LoadSceneAsync("Main Menu 1", LoadSceneMode.Additive));
-            currentSceneName = "Main Menu 1";
+            scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneNameVR, LoadSceneMode.Additive));
+            currentSceneName = startSceneNameVR;
         }
         else
         {
             scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive));
             currentSceneName = startSceneName;
         }
+
         StartCoroutine(GetSceneLoadProgress());
     }
 

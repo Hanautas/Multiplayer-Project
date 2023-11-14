@@ -7,12 +7,10 @@ public class GameSettings : ScriptableObject
 {
     [SerializeField]
     private string gameVersion = "0.0.0";
-
     public string GameVersion { get { return gameVersion; } }
 
     [SerializeField]
     private string nickname = "Nickname";
-
     public string Nickname
     {
         get
@@ -22,7 +20,7 @@ public class GameSettings : ScriptableObject
         }
     }
 
-    public bool isVR;
-    
-
+    [SerializeField]
+    private bool isVR = false;
+    public bool IsVR { get { return isVR; } set { isVR = value; } }
 }
