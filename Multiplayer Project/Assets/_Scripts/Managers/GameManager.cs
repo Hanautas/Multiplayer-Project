@@ -22,19 +22,19 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        LoadStartScene();
-    }
-
-    private void LoadStartScene()
+    public void LoadStartScene(bool isVR)
     {
         loadingScreen.SetActive(true);
-
-        scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive));
-
-        currentSceneName = startSceneName;
-
+        if(isVR)
+        {
+            scenesLoading.Add(SceneManager.LoadSceneAsync("Main Menu 1", LoadSceneMode.Additive));
+            currentSceneName = "Main Menu 1";
+        }
+        else
+        {
+            scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive));
+            currentSceneName = startSceneName;
+        }
         StartCoroutine(GetSceneLoadProgress());
     }
 

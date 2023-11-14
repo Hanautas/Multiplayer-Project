@@ -21,4 +21,8 @@ public class GameSettings : ScriptableObject
             return $"{nickname}_{value.ToString()}";
         }
     }
+
+    public bool isVR;
+    
+
 }

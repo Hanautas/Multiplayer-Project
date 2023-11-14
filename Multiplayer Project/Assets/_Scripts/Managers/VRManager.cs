@@ -20,6 +20,9 @@ public class VRManager : MonoBehaviour
 
         if (GetArg(enableVRArg))
         {
+
+            MasterManager.GameSettings.isVR = true;
+
             Debug.Log("Initializing XR...");
 
             yield return XRGeneralSettings.Instance.Manager.InitializeLoader();
@@ -34,6 +37,7 @@ public class VRManager : MonoBehaviour
 
                 XRGeneralSettings.Instance.Manager.StartSubsystems();
             }
+            GameManager.instance.LoadStartScene(MasterManager.GameSettings.isVR);
         }
         else
         {
