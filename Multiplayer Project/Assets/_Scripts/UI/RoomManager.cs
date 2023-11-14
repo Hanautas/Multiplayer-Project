@@ -180,7 +180,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
                 if (index == -1)
                 {
-                    RoomListItem roomListItem = Instantiate(Resources.Load<RoomListItem>("UI/RoomListItem"), roomContent);
+                    RoomListItem roomListItem = Instantiate(Resources.Load<RoomListItem>("UI/Lobby/RoomListItem"), roomContent);
 
                     roomListItem.SetRoomInfo(roomInfo);
 
@@ -228,7 +228,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void AddPlayerListItem(Player newPlayer)
     {
-        PlayerListItem playerListItem = Instantiate(Resources.Load<PlayerListItem>("UI/PlayerListItem"), playerContent);
+        PlayerListItem playerListItem = Instantiate(Resources.Load<PlayerListItem>("UI/Lobby/PlayerListItem"), playerContent);
 
         playerListItem.SetPlayerInfo(newPlayer);
 
