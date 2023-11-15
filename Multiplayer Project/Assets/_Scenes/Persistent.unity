@@ -163,7 +163,7 @@ MonoBehaviour:
   reliableMode: 0
   encrypt: 0
   transmitEnabled: 1
-  samplingRate: 24000
+  samplingRate: 16000
   frameDuration: 20000
   bitrate: 30000
   sourceType: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisconnectAfterKeepAlive: 0
   KeepAliveInBackground: 60000
-  ApplyDontDestroyOnLoad: 1
+  ApplyDontDestroyOnLoad: 0
   runInBackground: 1
   statsResetInterval: 1000
   speakerPrefab: {fileID: 5052241986240486585, guid: a54dca820757e274d9c3292ccdc062fd, type: 3}
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800eb1193ebb36f47ada020bb63b7cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugVR: 0
+  debugVR: 1
 --- !u!4 &1291179327
 Transform:
   m_ObjectHideFlags: 0
