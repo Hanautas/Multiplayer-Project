@@ -7,6 +7,8 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonConnect : MonoBehaviourPunCallbacks
 {
+    public bool debugVR = false;
+
     void Start()
     {
         Debug.Log("Connecting...");
@@ -40,6 +42,11 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
         hash.Add("isReady", false);
         hash.Add("isVR", false);
+
+        if (debugVR)
+        {
+            Utility.SetLocalPlayerPropertyBool("isVR", true);
+        }
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }

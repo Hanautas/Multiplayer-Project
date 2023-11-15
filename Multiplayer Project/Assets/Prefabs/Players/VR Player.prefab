@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 789980237765284499}
   - component: {fileID: 5138494882769759466}
   - component: {fileID: 3107762007066449187}
+  - component: {fileID: 3645028283312453682}
   m_Layer: 0
   m_Name: VR Player
   m_TagString: Player
@@ -983,7 +984,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5138494882769759466}
@@ -1018,6 +1019,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3645028283312453682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099572199037983535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abfd7622b4bafc541bf24962401448dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isVR: 1
 --- !u!1 &6099572199368685889
 GameObject:
   m_ObjectHideFlags: 0

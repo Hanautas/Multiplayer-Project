@@ -20,7 +20,7 @@ public class VRManager : MonoBehaviour
 
         if (GetArg(enableVRArg))
         {
-            MasterManager.GameSettings.IsVR = true;
+            Utility.SetLocalPlayerPropertyBool("isVR", true);
 
             Debug.Log("Initializing XR...");
 
