@@ -19,8 +19,4 @@ public class GameSettings : ScriptableObject
             return $"{nickName}_{value.ToString()}";
         }
     }
-
-    [SerializeField]
-    private bool isVR = false;
-    public bool IsVR { get { return isVR; } set { isVR = value; } }
 }
