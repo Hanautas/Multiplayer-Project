@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4428091056976345666}
   - component: {fileID: 4428091056976345667}
   m_Layer: 0
-  m_Name: Desktop Player Camera
-  m_TagString: Untagged
+  m_Name: Main Camera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4428091056976345668}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &4428091057148442193
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5731626252419987530}
   m_Layer: 0
   m_Name: Desktop Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,3 +181,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfd7622b4bafc541bf24962401448dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isVR: 0
