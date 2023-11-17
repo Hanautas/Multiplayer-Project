@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviourPunCallbacks
 {
-    private bool showOnce = false;
+    //private bool showOnce = false;
 
     public GameObject connectMenu;
     public GameObject mainMenu;
