@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
         PhotonConnect.instance.Connect();
 
         StartCoroutine(VRManager.instance.StartXRCoroutine());
-
-        LoadStartScene();
     }
 
     public void LoadStartScene()

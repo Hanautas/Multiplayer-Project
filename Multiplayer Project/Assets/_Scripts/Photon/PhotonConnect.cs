@@ -36,6 +36,8 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
             SetupLocalPlayerProperties();
         }
+
+        GameManager.instance.LoadStartScene();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
