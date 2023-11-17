@@ -27,4 +27,21 @@ public static class Utility
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
+
+    public static bool GetArg(string name)
+    {
+        var args = System.Environment.GetCommandLineArgs();
+
+        for (int i = 0; i < args.Length; i++)
+        {
+            Debug.Log($"Arg {i}: {args[i]}");
+
+            if (args[i] == name)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

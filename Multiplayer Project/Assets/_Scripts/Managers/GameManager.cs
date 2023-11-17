@@ -23,11 +23,20 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    public void LoadStartScene(bool isVR)
+    void Start()
+    {
+        PhotonConnect.instance.Connect();
+
+        StartCoroutine(VRManager.instance.StartXRCoroutine());
+
+        LoadStartScene();
+    }
+
+    public void LoadStartScene()
     {
         loadingScreen.SetActive(true);
 
-        if (isVR)
+        if ((bool)Utility.GetLocalPlayerProperty("isVR"))
         {
             scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneNameVR, LoadSceneMode.Additive));
             currentSceneName = startSceneNameVR;

@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.NickName = nickNameText.text;
     }
-    
+/*
     public override void OnConnectedToMaster()
     {
         if (!showOnce)
@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
             mainMenu.SetActive(true);
         }
     }
-
+*/
     public void Play()
     {
         mainMenu.SetActive(false);

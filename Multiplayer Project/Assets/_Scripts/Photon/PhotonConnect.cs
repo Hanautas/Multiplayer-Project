@@ -7,9 +7,16 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonConnect : MonoBehaviourPunCallbacks
 {
+    public static PhotonConnect instance;
+
     public bool debugVR = false;
 
-    void Start()
+    void Awake()
+    {
+        instance = this;
+    }
+
+    public void Connect()
     {
         Debug.Log("Connecting...");
         
