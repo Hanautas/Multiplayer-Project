@@ -53,4 +53,13 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
         Application.Quit();
     }
+
+    public void SetVRPlayerHeight(float heightAmount)
+    {
+        float newHeight = MasterManager.GameSettings.VRPlayerHeight + heightAmount;
+
+        VRPlayer.instance.SetHeight(MasterManager.GameSettings.VRPlayerHeight + heightAmount);
+
+        MasterManager.GameSettings.VRPlayerHeight = newHeight;
+    }
 }

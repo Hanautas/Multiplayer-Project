@@ -14,11 +14,6 @@ public class VRManager : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        StartCoroutine(StartXRCoroutine());
-    }
-
     public IEnumerator StartXRCoroutine()
     {
         var enableVRArg = "--enable-vr";

@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Management;
 
 public class VRPlayer : MonoBehaviour
 {
-    public Transform headOffset;
-    public Transform head;
+    public static VRPlayer instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        Recenter();
+        SetHeight(MasterManager.GameSettings.VRPlayerHeight);
+
+        var xrInput = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRInputSubsystem>();
+
+        xrInput.TrySetTrackingOriginMode(TrackingOriginModeFlags.Device);
+        xrInput.TryRecenter();
     }
 
-    public void Recenter()
+    public void SetHeight(float height)
     {
-        headOffset.localEulerAngles = new Vector3(0f, 180f, 0f);
-        headOffset.localPosition = new Vector3(-head.localPosition.x, 0f, -head.localPosition.z);
+        transform.localScale = new Vector3(height, height, height);
     }
 }
