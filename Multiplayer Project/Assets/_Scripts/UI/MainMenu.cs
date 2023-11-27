@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviourPunCallbacks
 {
-    //private bool showOnce = false;
-
-    public GameObject connectMenu;
     public GameObject mainMenu;
     public GameObject lobbyMenu;
 
@@ -29,18 +26,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LocalPlayer.NickName = nickNameText.text;
     }
-/*
-    public override void OnConnectedToMaster()
-    {
-        if (!showOnce)
-        {
-            showOnce = true;
 
-            connectMenu.SetActive(false);
-            mainMenu.SetActive(true);
-        }
-    }
-*/
     public void Play()
     {
         mainMenu.SetActive(false);
