@@ -7,7 +7,7 @@ public abstract class Puzzle : MonoBehaviour
 {
     public bool isComplete;
 
-    public UnityEvent onCompleteEvent;
+    public UnityEvent completeEvent;
 
     public virtual void CheckPuzzle()
     {
@@ -18,6 +18,6 @@ public abstract class Puzzle : MonoBehaviour
     {
         isComplete = true;
 
-        onCompleteEvent.Invoke();
+        completeEvent.Invoke();
     }
 }

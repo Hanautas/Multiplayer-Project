@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PuzzleManager : MonoBehaviour
 {
     public List<Puzzle> puzzles;
+
+    public UnityEvent completeEvent;
 
     public void CheckPuzzlesComplete()
     {
@@ -21,6 +24,6 @@ public class PuzzleManager : MonoBehaviour
 
     public void Complete()
     {
-
+        completeEvent.Invoke();
     }
 }

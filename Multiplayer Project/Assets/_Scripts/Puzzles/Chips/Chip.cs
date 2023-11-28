@@ -5,4 +5,6 @@ using UnityEngine;
 public class Chip : MonoBehaviour
 {
     public ColorType type;
+
+    public bool isCorrect;
 }
