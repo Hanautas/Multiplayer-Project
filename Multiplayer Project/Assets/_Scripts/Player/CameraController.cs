@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private float horizontalSpeed;
-    private float VerticalSpeed;
+    private float verticalSpeed;
 
     public float minX;
     public float maxX;
@@ -25,11 +25,13 @@ public class CameraController : MonoBehaviour
 
     public void TurnVertical(float speed)
     {
-        VerticalSpeed = speed;
+        verticalSpeed = speed;
     }
 
     private void Turn()
     {
-        transform.eulerAngles = new Vector3(Mathf.Clamp(transform.eulerAngles.x + VerticalSpeed, minX, maxX), Mathf.Clamp(transform.eulerAngles.y + horizontalSpeed, minY, maxY), 0);
+        transform.eulerAngles = new Vector3(
+            Mathf.Clamp(transform.eulerAngles.x + verticalSpeed, minX, maxX),
+            Mathf.Clamp(transform.eulerAngles.y + horizontalSpeed, minY, maxY), 0);
     }
 }

@@ -6,6 +6,10 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
     [SerializeField]
+    private bool devMode = false;
+    public bool DevMode { get { return devMode; } set { devMode = value; } }
+    
+    [SerializeField]
     private string gameVersion = "0.0.0";
     public string GameVersion { get { return gameVersion; } }
 
@@ -19,11 +23,7 @@ public class GameSettings : ScriptableObject
             return $"{nickName}_{value.ToString()}";
         }
     }
-/*
-    [SerializeField]
-    private bool isVR = false;
-    public bool IsVR { get { return isVR; } set { isVR = value; } }
-*/
+
     [SerializeField]
     private float vRPlayerHeight = 1f;
     public float VRPlayerHeight { get { return vRPlayerHeight; } set { vRPlayerHeight = value; } }

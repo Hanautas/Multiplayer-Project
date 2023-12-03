@@ -8,4 +8,3 @@ public class Chip : MonoBehaviour
 
     public bool isCorrect;
 }
-//comment
