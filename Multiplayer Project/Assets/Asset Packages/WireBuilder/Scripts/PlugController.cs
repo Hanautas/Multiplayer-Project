@@ -28,7 +28,8 @@ public class PlugController : MonoBehaviour
         {
             endAnchor.transform.position = plugPosition.position;
 
-            Vector3 eulerRotation = new Vector3(this.transform.eulerAngles.x + 90, this.transform.eulerAngles.y, this.transform.eulerAngles.z);
+            Vector3 eulerRotation = new Vector3(this.transform.eulerAngles.x + 90,
+                this.transform.eulerAngles.y, this.transform.eulerAngles.z);
             endAnchor.transform.rotation = Quaternion.Euler(eulerRotation);
         }
     }
@@ -54,18 +55,11 @@ public class PlugController : MonoBehaviour
             endAnchor.transform.position = plugPosition.position;
             endAnchor.transform.rotation = transform.rotation;
 
+            isComplete = endAnchor.gameObject.GetComponent<Wire>().id == id;
+
             canPickup = false;
             
             StartCoroutine(EnablePickup());
-
-            if (other.gameObject.GetComponent<Wire>().id == id)
-            {
-                isComplete = true;
-            }
-            else
-            {
-                isComplete = false;
-            }
 
             OnPlugged();
         }
