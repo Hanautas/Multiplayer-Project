@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Chat;
 using ExitGames.Client.Photon;
@@ -14,13 +15,25 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     private ChatClient chatClient;
 
-    [Header("UI")]
-    public TMP_Text chatText;
+    [Header("Desktop UI")]
+    public Transform content;
     public TMP_InputField chatInputField;
+
+    [Header("VR UI")]
+    public Transform contentVR;
+
+    public List<Sprite> emoteSprites;
+
+    private Dictionary<string, Sprite> emotes = new Dictionary<string, Sprite>();
 
     void Start()
     {
         ConnectToChat();
+
+        foreach (Sprite sprite in emoteSprites)
+        {
+            emotes.Add(sprite.name, sprite);
+        }
     }
 
     void Update()
@@ -33,16 +46,51 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public void ConnectToChat()
     {
+        isConnected = true;
+
         chatClient = new ChatClient(this);
         chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.AppVersion, new AuthenticationValues(PhotonNetwork.LocalPlayer.NickName));
     }
 
-    public void SubmitPublicChat()
+    public void ChatInputOnValueChanged(string value)
     {
-        chatClient.PublishMessage("RegionChannel", currentChat);
+        currentChat = value;
+    }
 
-        chatInputField.text = "";
-        currentChat = "";
+    public void PublishChatMessage()
+    {
+        if (!string.IsNullOrEmpty(currentChat))
+        {
+            chatClient.PublishMessage("RegionChannel", currentChat);
+
+            chatInputField.text = "";
+            currentChat = "";
+        }
+    }
+
+    private void CreateChatMessage(string sender, string message)
+    {
+        ChatMessage messageObject = Instantiate(Resources.Load<ChatMessage>("UI/Chat/ChatMessage"), content);
+        messageObject.Setup(sender, message);
+
+        ChatMessage messageObjectVR = Instantiate(Resources.Load<ChatMessage>("UI/Chat/ChatMessage"), contentVR);
+        messageObjectVR.Setup(sender, message);
+        //messageObjectVR.transform.localScale *= 3f;
+    }
+
+    public void PublishChatEmote(string emoteName)
+    {
+        chatClient.PublishMessage("RegionChannel", emoteName);
+    }
+
+    private void CreateChatEmote(string emoteName)
+    {
+        ChatEmote emoteObject = Instantiate(Resources.Load<ChatEmote>("UI/Chat/ChatEmote"), content);
+        emoteObject.Setup("Unknown", emotes[emoteName]);
+
+        ChatEmote emoteObjectVR = Instantiate(Resources.Load<ChatEmote>("UI/Chat/ChatEmote"), contentVR);
+        emoteObjectVR.Setup("Unknown", emotes[emoteName]);
+        //emoteObjectVR.transform.localScale *= 3f;
     }
 
     public void DebugReturn(DebugLevel level, string message)
@@ -71,7 +119,16 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     {
         for (int i = 0; i < senders.Length; i++)
         {
-            chatText.text += $"\n{senders[i]}: {messages[i]}";
+            string message = messages[i].ToString();
+
+            if (emotes.ContainsKey(message))
+            {
+                CreateChatEmote(message);
+            }
+            else
+            {
+                CreateChatMessage(senders[i], message);
+            }
         }
     }
 

@@ -2243,8 +2243,8 @@ MonoBehaviour:
   playerContent: {fileID: 1466037692}
   readyText: {fileID: 1917484503}
   startTimer: 0
-  time: 8
-  timeRemaining: 8
+  time: 6
+  timeRemaining: 6
   timerText: {fileID: 1473232073}
 --- !u!4 &639140287
 Transform:
