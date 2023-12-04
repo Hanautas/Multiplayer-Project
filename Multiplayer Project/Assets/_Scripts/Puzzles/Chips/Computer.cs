@@ -7,8 +7,8 @@ public class Computer : MonoBehaviour
 {
     public ColorType type;
 
-    public bool canPickup = true;
     public bool isComplete = false;
+    public bool canPickup = true;
 
     public Transform plugPosition;
 

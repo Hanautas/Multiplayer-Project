@@ -22,15 +22,13 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     [Header("VR UI")]
     public Transform contentVR;
 
-    public List<Sprite> emoteSprites;
-
     private Dictionary<string, Sprite> emotes = new Dictionary<string, Sprite>();
 
     void Start()
     {
         ConnectToChat();
 
-        foreach (Sprite sprite in emoteSprites)
+        foreach (Sprite sprite in Resources.LoadAll("UI/Emotes"))
         {
             emotes.Add(sprite.name, sprite);
         }

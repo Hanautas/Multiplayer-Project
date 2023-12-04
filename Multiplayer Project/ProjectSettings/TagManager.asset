@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WireEndAnchor
   - ComputerChip
+  - Scissor
   layers:
   - Default
   - TransparentFX

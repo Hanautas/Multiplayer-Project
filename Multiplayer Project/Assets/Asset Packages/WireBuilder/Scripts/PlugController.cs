@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class PlugController : MonoBehaviour
 {
-    public bool canPickup = true;
     public bool isComplete = false;
+    public bool canPickup = true;
 
     public int id;
 
