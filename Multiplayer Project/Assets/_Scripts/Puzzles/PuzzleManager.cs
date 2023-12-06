@@ -7,10 +7,9 @@ using TMPro;
 public class PuzzleManager : MonoBehaviour
 {
     [Header("Timer")]
-    public bool isTimer = true;
+    private bool isTimer;
 
-    //public float time = 900f;
-    public float timeRemaining = 900f;
+    public float time = 900f;
 
     public TMP_Text timerText1;
     public TMP_Text timerText2;
@@ -19,28 +18,39 @@ public class PuzzleManager : MonoBehaviour
     public List<Puzzle> puzzles;
 
     public UnityEvent completeEvent;
+    public UnityEvent failEvent;
+
+    void Start()
+    {
+        SetTimer(true);
+    }
 
     void Update()
     {
         if (isTimer)
         {
-            if (timeRemaining > 0)
+            if (time > 0)
             {
-                timeRemaining -= Time.deltaTime;
+                time -= Time.deltaTime;
 
-                if (timeRemaining < 0)
+                if (time < 0)
                 {
-                    isTimer = false;
+                    time = 0;
 
-                    timeRemaining = 0;
+                    Fail();
                 }
 
-                string timeToDisplay = DisplayTime(timeRemaining);
+                string timeToDisplay = DisplayTime(time);
 
                 timerText1.text = timeToDisplay;
                 timerText2.text = timeToDisplay;
             }
         }
+    }
+
+    public void SetTimer(bool isActive)
+    {
+        isTimer = isActive;
     }
 
     private string DisplayTime(float timeToDisplay)
@@ -61,11 +71,18 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
-        Complete();
+        completeEvent.Invoke();
     }
 
     public void Complete()
     {
-        completeEvent.Invoke();
+        isTimer = false;
+    }
+
+    public void Fail()
+    {
+        isTimer = false;
+
+        failEvent.Invoke();
     }
 }
