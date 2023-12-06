@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7985712727833492214}
   - component: {fileID: 5152985941638084883}
   - component: {fileID: 9141044072994673920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8208214735386748450}
   - component: {fileID: 4680968295854276992}
   - component: {fileID: 391811343399236462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 6099572198864443493}
   - component: {fileID: 6099572198864443492}
   - component: {fileID: 6099572198864443491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6099572198894457773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 6099572199017693740}
   - component: {fileID: 6099572199017693739}
   - component: {fileID: 7654500893397487838}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -837,7 +837,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 375
+    m_Bits: 1911
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 5138494882769759466}
   - component: {fileID: 3107762007066449187}
   - component: {fileID: 3645028283312453682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VR Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 6099572199368685892}
   - component: {fileID: 6099572199368685891}
   - component: {fileID: 928279874208917066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 6099572200127045907}
   - component: {fileID: 6099572200127045906}
   - component: {fileID: 2286171647500216732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 6099572200472726768}
   - component: {fileID: 6099572200472726783}
   - component: {fileID: 6099572200472726782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftHand Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2013,7 +2013,7 @@ GameObject:
   - component: {fileID: 3742631389655041470}
   - component: {fileID: 8177875863211817663}
   - component: {fileID: 4881911394648577343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 3665366448904695423}
   - component: {fileID: 7352718830658705272}
   - component: {fileID: 5821735604889475602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

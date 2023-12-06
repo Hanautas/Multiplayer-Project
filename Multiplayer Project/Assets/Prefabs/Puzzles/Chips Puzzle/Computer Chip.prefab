@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1600120027425328195}
   - component: {fileID: 6520888504318570329}
   - component: {fileID: 1600120027425328192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Computer Chip
   m_TagString: ComputerChip
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 1600120027520629757}
   - component: {fileID: 1600120027520629730}
   - component: {fileID: 1600120027520629731}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
