@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3545033275668389366}
   - component: {fileID: 3535481091043972899}
   - component: {fileID: 4289858745320696077}
+  - component: {fileID: 4823445795322664073}
   m_Layer: 6
   m_Name: EndAnchor
   m_TagString: WireEndAnchor
@@ -310,6 +311,22 @@ ConfigurableJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4823445795322664073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890808805423310037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2831689269844095545
 GameObject:
   m_ObjectHideFlags: 0
