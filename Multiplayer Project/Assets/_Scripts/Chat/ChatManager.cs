@@ -47,7 +47,9 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         isConnected = true;
 
         chatClient = new ChatClient(this);
-        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.AppVersion, new AuthenticationValues(PhotonNetwork.LocalPlayer.NickName));
+        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat,
+            PhotonNetwork.AppVersion,
+            new AuthenticationValues(PhotonNetwork.LocalPlayer.NickName));
     }
 
     public void ChatInputOnValueChanged(string value)
@@ -73,7 +75,6 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
         ChatMessage messageObjectVR = Instantiate(Resources.Load<ChatMessage>("UI/Chat/ChatMessage"), contentVR);
         messageObjectVR.Setup(sender, message);
-        //messageObjectVR.transform.localScale *= 3f;
     }
 
     public void PublishChatEmote(string emoteName)
@@ -88,7 +89,6 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
         ChatEmote emoteObjectVR = Instantiate(Resources.Load<ChatEmote>("UI/Chat/ChatEmote"), contentVR);
         emoteObjectVR.Setup("Unknown", emotes[emoteName]);
-        //emoteObjectVR.transform.localScale *= 3f;
     }
 
     public void DebugReturn(DebugLevel level, string message)

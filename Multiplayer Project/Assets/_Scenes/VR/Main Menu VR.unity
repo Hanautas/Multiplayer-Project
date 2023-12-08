@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6099572198864443494, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 21452725}
     - target: {fileID: 6099572199037983522, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -372,6 +376,18 @@ PrefabInstance:
     - target: {fileID: 6099572199037983535, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099572200472726769, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 21452725}
+    - target: {fileID: 6610640624598392781, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996314827531367468, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d771bf8224c7abe41a42a0fea93672a6, type: 3}
