@@ -85,10 +85,10 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     private void CreateChatEmote(string emoteName)
     {
         ChatEmote emoteObject = Instantiate(Resources.Load<ChatEmote>("UI/Chat/ChatEmote"), content);
-        emoteObject.Setup("Unknown", emotes[emoteName]);
+        emoteObject.Setup("VR Player", emotes[emoteName]);
 
         ChatEmote emoteObjectVR = Instantiate(Resources.Load<ChatEmote>("UI/Chat/ChatEmote"), contentVR);
-        emoteObjectVR.Setup("Unknown", emotes[emoteName]);
+        emoteObjectVR.Setup("VR Player", emotes[emoteName]);
     }
 
     public void DebugReturn(DebugLevel level, string message)

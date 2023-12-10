@@ -8,10 +8,6 @@ using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-    [Header("Menu")]
-    public GameObject lobbyMenu;
-    public GameObject currentRoomMenu;
-
     [Header("Room")]
     public TMP_Text roomNameInputField;
     public Transform roomContent;
@@ -96,7 +92,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
-        if (MasterManager.GameSettings.DevMode)
+        if (MasterManager.GameSettings.DebugMode)
         {
             StartTimer(true);
 
@@ -141,9 +137,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        lobbyMenu.gameObject.SetActive(true);
-        currentRoomMenu.gameObject.SetActive(false);
-
         Utility.DestroyChildren(playerContent);
         players.Clear();
 
@@ -156,9 +149,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully.");
-
-        lobbyMenu.gameObject.SetActive(false);
-        currentRoomMenu.gameObject.SetActive(true);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -203,9 +193,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         Utility.DestroyChildren(roomContent);
         rooms.Clear();
-
-        lobbyMenu.gameObject.SetActive(false);
-        currentRoomMenu.gameObject.SetActive(true);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

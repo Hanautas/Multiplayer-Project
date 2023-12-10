@@ -48,4 +48,9 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
         MasterManager.GameSettings.VRPlayerHeight = newHeight;
     }
+
+    public void SetDebugMode()
+    {
+        MasterManager.GameSettings.DebugMode = !MasterManager.GameSettings.DebugMode;
+    }
 }

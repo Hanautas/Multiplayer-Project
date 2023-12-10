@@ -9,6 +9,8 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 {
     public static PhotonConnect instance;
 
+    private bool callOnce = false;
+
     void Awake()
     {
         instance = this;
@@ -32,10 +34,15 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.JoinLobby();
 
-            SetupLocalPlayerProperties();
-        }
+            if (!callOnce)
+            {
+                callOnce = true;
 
-        StartCoroutine(VRManager.instance.StartXRCoroutine());
+                SetupLocalPlayerProperties();
+
+                StartCoroutine(VRManager.instance.StartXRCoroutine());
+            }
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -49,11 +56,6 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
         hash.Add("isReady", false);
         hash.Add("isVR", false);
-
-        if (VRManager.instance.debugVR)
-        {
-            hash["isVR"] = true;
-        }
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }

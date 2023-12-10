@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8dd8c7551fd5a40b8601918d191edc, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
-  devMode: 1
-  gameVersion: 0.0.1
+  debugMode: 0
+  debugVR: 0
+  gameVersion: 0.3.0
   nickName: Player
   vRPlayerHeight: 1

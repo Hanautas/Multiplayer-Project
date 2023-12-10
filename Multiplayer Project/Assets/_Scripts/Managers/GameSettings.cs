@@ -6,8 +6,12 @@ using UnityEngine;
 public class GameSettings : ScriptableObject
 {
     [SerializeField]
-    private bool devMode = false;
-    public bool DevMode { get { return devMode; } set { devMode = value; } }
+    private bool debugMode = false;
+    public bool DebugMode { get { return debugMode; } set { debugMode = value; } }
+
+    [SerializeField]
+    private bool debugVR = false;
+    public bool DebugVR { get { return debugVR; } set { debugVR = value; } }
     
     [SerializeField]
     private string gameVersion = "0.0.0";

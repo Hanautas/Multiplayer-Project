@@ -7,8 +7,6 @@ public class VRManager : MonoBehaviour
 {
     public static VRManager instance;
 
-    public bool debugVR = false;
-
     void Awake()
     {
         instance = this;
@@ -20,7 +18,7 @@ public class VRManager : MonoBehaviour
  
         Debug.Log("Looking if VR should enable");
 
-        if (debugVR || Utility.GetArg(enableVRArg))
+        if (MasterManager.GameSettings.DebugVR || Utility.GetArg(enableVRArg))
         {
             Utility.SetLocalPlayerPropertyBool("isVR", true);
 
