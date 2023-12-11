@@ -17,6 +17,8 @@ public class PuzzleManager : MonoBehaviour
     [Header("Puzzle")]
     public List<Puzzle> puzzles;
 
+    public UnityEvent puzzlesCompleteEvent;
+
     public UnityEvent completeEvent;
     public UnityEvent failEvent;
 
@@ -71,12 +73,14 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
-        completeEvent.Invoke();
+        puzzlesCompleteEvent.Invoke();
     }
 
     public void Complete()
     {
         isTimer = false;
+
+        completeEvent.Invoke();
     }
 
     public void Fail()

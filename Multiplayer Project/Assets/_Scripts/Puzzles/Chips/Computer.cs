@@ -1,67 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Computer : MonoBehaviour
+public class Computer : Keyhole
 {
     public ColorType type;
 
-    public bool isComplete = false;
-    public bool canPickup = true;
-
-    public Transform plugPosition;
-
-    private GameObject computerChip;
-
-    public UnityEvent onPlugged;
-
-    private void Update()
+    public override void OnTriggerEnter(Collider other)
     {
-        if (!canPickup)
+        if (other.gameObject.tag == tagToCheck)
         {
-            computerChip.transform.position = plugPosition.position;
-            computerChip.transform.rotation = plugPosition.rotation;
-        }
-    }
+            key = other.gameObject;
 
-    public void OnPlugged()
-    {
-        onPlugged.Invoke();
-    }
+            Chip chipComponent = other.GetComponent<Chip>();
 
-    private IEnumerator EnablePickup()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        canPickup = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "ComputerChip")
-        {
-            computerChip = other.gameObject;
-
-            computerChip.transform.position = plugPosition.position;
-            computerChip.transform.rotation = plugPosition.rotation;
+            isComplete = (chipComponent.type == type && chipComponent.isCorrect);
 
             canPickup = false;
 
+            SetKeyTransform();
+
+            OnInsert();
+
             StartCoroutine(EnablePickup());
-
-            Chip chipComponent = other.gameObject.GetComponent<Chip>();
-
-            if (chipComponent.type == type && chipComponent.isCorrect)
-            {
-                isComplete = true;
-            }
-            else
-            {
-                isComplete = false;
-            }
-
-            OnPlugged();
         }
     }
 }

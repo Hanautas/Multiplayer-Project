@@ -4,16 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class PlugController : MonoBehaviour
+public class PlugController : Keyhole
 {
-    public bool isComplete = false;
-    public bool canPickup = true;
-
     public int id;
-
-    public Transform plugPosition;
-
-    public UnityEvent onPlugged;
 
     [HideInInspector]
     public Transform endAnchor;
@@ -22,46 +15,33 @@ public class PlugController : MonoBehaviour
     [HideInInspector]
     public WireController wireController;
 
-    private void Update()
+    public override void Update()
     {
         if (!canPickup)
         {
-            endAnchor.transform.position = plugPosition.position;
+            key.transform.position = holePosition.position;
 
             Vector3 eulerRotation = new Vector3(this.transform.eulerAngles.x + 90,
                 this.transform.eulerAngles.y, this.transform.eulerAngles.z);
-            endAnchor.transform.rotation = Quaternion.Euler(eulerRotation);
+                key.transform.rotation = Quaternion.Euler(eulerRotation);
         }
     }
 
-    public void OnPlugged()
+    public override void OnTriggerEnter(Collider other)
     {
-        onPlugged.Invoke();
-    }
-
-    private IEnumerator EnablePickup()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        canPickup = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "WireEndAnchor")
+        if (other.gameObject.tag == tagToCheck)
         {
-            endAnchor = other.transform;
+            key = other.gameObject;
 
-            endAnchor.transform.position = plugPosition.position;
-            endAnchor.transform.rotation = transform.rotation;
-
-            isComplete = endAnchor.gameObject.GetComponent<Wire>().id == id;
+            isComplete = key.GetComponent<Wire>().id == id;
 
             canPickup = false;
+
+            SetKeyTransform();
+
+            OnInsert();
             
             StartCoroutine(EnablePickup());
-
-            OnPlugged();
         }
     }
 }
