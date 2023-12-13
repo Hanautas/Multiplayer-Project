@@ -28,7 +28,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     {
         ConnectToChat();
 
-        foreach (Sprite sprite in Resources.LoadAll("UI/Emotes"))
+        foreach (Sprite sprite in Resources.LoadAll<Sprite>("UI/Emotes"))
         {
             emotes.Add(sprite.name, sprite);
         }

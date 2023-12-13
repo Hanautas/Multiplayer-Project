@@ -18,7 +18,7 @@ public class VRManager : MonoBehaviour
  
         Debug.Log("Looking if VR should enable");
 
-        if (MasterManager.GameSettings.DebugVR || Utility.GetArg(enableVRArg))
+        if (Utility.GetArg(enableVRArg))
         {
             Utility.SetLocalPlayerPropertyBool("isVR", true);
 

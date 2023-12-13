@@ -33,7 +33,9 @@ public class PlugController : Keyhole
         {
             key = other.gameObject;
 
-            isComplete = key.GetComponent<Wire>().id == id;
+            Wire wireComponent = other.GetComponent<Wire>();
+
+            isComplete = (wireComponent.id == id);
 
             canPickup = false;
 

@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (MasterManager.GameSettings.DebugVR)
+            {
+                Utility.SetLocalPlayerPropertyBool("isVR", true);
+            }
+
             scenesLoading.Add(SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive));
             currentSceneName = startSceneName;
         }

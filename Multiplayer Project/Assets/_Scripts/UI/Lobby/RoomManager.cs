@@ -8,6 +8,10 @@ using TMPro;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+    [Header("Menu")]
+    public GameObject lobbyMenu;
+    public GameObject currentRoomMenu;
+
     [Header("Room")]
     public TMP_Text roomNameInputField;
     public Transform roomContent;
@@ -189,10 +193,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        GetCurrentRoomPlayers();
-
         Utility.DestroyChildren(roomContent);
         rooms.Clear();
+
+        lobbyMenu.SetActive(false);
+        currentRoomMenu.SetActive(true);
+
+        GetCurrentRoomPlayers();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

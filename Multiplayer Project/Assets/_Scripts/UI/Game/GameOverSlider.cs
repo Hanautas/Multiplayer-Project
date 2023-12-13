@@ -20,7 +20,7 @@ public class GameOverSlider : MonoBehaviour
             }
             else if (slider.value >= time)
             {
-                GameManager.instance.LoadScene("Main Menu");
+                GameManager.instance.LoadStartScene();
             }
         }
     }
