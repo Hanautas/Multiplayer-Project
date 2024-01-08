@@ -20,7 +20,7 @@ public class Computer : Keyhole
 
             SetKeyTransform();
 
-            OnInsert();
+            onInsert.Invoke();
 
             StartCoroutine(EnablePickup());
         }

@@ -24,11 +24,6 @@ public abstract class Keyhole : MonoBehaviour
         }
     }
 
-    public void OnInsert()
-    {
-        onInsert.Invoke();
-    }
-
     public void SetKeyTransform()
     {
         key.transform.position = holePosition.position;
@@ -54,7 +49,7 @@ public abstract class Keyhole : MonoBehaviour
 
             SetKeyTransform();
 
-            OnInsert();
+            onInsert.Invoke();
 
             StartCoroutine(EnablePickup());
         }
