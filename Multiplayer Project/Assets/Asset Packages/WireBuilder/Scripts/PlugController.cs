@@ -39,9 +39,7 @@ public class PlugController : Keyhole
 
             canPickup = false;
 
-            SetKeyTransform();
-
-            OnInsert();
+            onInsert.Invoke();
             
             StartCoroutine(EnablePickup());
         }
