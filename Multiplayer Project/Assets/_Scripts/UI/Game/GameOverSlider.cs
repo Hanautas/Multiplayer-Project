@@ -20,13 +20,22 @@ public class GameOverSlider : MonoBehaviour
             }
             else if (slider.value >= time)
             {
-                GameManager.instance.LoadStartScene();
+                if ((bool)Utility.GetLocalPlayerProperty("isVR"))
+                {
+                    GameManager.instance.LoadScene("Main Menu VR");
+                }
+                else
+                {
+                    GameManager.instance.LoadScene("Main Menu");
+                }
             }
         }
     }
 
     public void SetActive()
     {
+        gameObject.SetActive(true);
+
         isActive = true;
     }
 }

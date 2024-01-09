@@ -44,4 +44,14 @@ public class VRManager : MonoBehaviour
 
         GameManager.instance.LoadStartScene();
     }
+
+    public void StopXR()
+    {
+        Debug.Log("Stopping XR...");
+
+        XRGeneralSettings.Instance.Manager.StopSubsystems();
+        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+
+        Debug.Log("XR stopped completely.");
+    }
 }
