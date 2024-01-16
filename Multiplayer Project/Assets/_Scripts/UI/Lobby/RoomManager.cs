@@ -136,7 +136,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     private void StartGame()
     {
-        GameManager.instance.LoadScene("Game");
+        if ((bool)PhotonNetwork.LocalPlayer.CustomProperties["isVR"])
+        {
+            GameManager.instance.LoadScene("Intro VR");
+        }
+        else
+        {
+            //GameManager.instance.LoadScene("Intro");
+            GameManager.instance.LoadScene("Intro 1");
+        }
     }
 
     public override void OnLeftRoom()
