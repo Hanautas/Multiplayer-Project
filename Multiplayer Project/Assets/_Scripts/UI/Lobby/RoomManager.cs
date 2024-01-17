@@ -142,8 +142,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            //GameManager.instance.LoadScene("Intro");
-            GameManager.instance.LoadScene("Intro 1");
+            GameManager.instance.LoadScene("Intro");
         }
     }
 
