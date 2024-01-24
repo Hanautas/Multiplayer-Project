@@ -37,7 +37,10 @@ public class MainMenu : MonoBehaviourPunCallbacks
     {
         Debug.Log("Quit game.");
 
-        VRManager.instance.StopXR();
+        if (Utility.GetLocalPlayerProperty("isVR"))
+        {
+            VRManager.instance.StopXR();
+        }
 
         Application.Quit();
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Management;
- 
+
 public class VRManager : MonoBehaviour
 {
     public static VRManager instance;
@@ -12,6 +12,7 @@ public class VRManager : MonoBehaviour
         instance = this;
     }
 
+    // https://docs.unity3d.com/Packages/com.unity.xr.management@4.0/manual/EndUser.html
     public IEnumerator StartXRCoroutine()
     {
         var enableVRArg = "--enable-vr";

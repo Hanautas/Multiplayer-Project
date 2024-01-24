@@ -16,6 +16,11 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
         instance = this;
     }
 
+    void Start()
+    {
+        Connect();
+    }
+
     public void Connect()
     {
         Debug.Log("Connecting...");

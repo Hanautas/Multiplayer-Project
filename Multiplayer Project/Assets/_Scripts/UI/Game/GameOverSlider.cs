@@ -20,7 +20,7 @@ public class GameOverSlider : MonoBehaviour
             }
             else if (slider.value >= time)
             {
-                if ((bool)Utility.GetLocalPlayerProperty("isVR"))
+                if (Utility.GetLocalPlayerProperty("isVR"))
                 {
                     GameManager.instance.LoadScene("Main Menu VR");
                 }

@@ -14,9 +14,9 @@ public static class Utility
         }
     }
 
-    public static object GetLocalPlayerProperty(string propertyName)
+    public static bool GetLocalPlayerProperty(string propertyName)
     {
-        return PhotonNetwork.LocalPlayer.CustomProperties[propertyName];
+        return (bool)PhotonNetwork.LocalPlayer.CustomProperties[propertyName];
     }
 
     public static void SetLocalPlayerPropertyBool(string propertyName, bool value)
